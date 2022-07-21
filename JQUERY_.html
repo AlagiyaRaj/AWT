@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      #myBox {
+        height: 100px;
+        width: 100px;
+        background-color:grey;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {   
+        $("#btntoggle").click(function () {
+          if ($("#btntoggle").text() === "Show") {
+            $("#myBox").css("display", "block");
+            $("#btnhide").attr("disabled", false);
+            $("#btnshow").attr("disabled", true);
+            $(this).text("Hide");
+          } else {
+            $("#myBox").css("display", "none");
+            $("#btnhide").attr("disabled", true);
+            $("#btnshow").attr("disabled", false);
+            $(this).text("Show");
+          }
+        });
+        $("#btnshow").click(function () {
+          $("#myBox").css("display", "block");
+          $("#btnshow").attr("disabled", true);
+          $("#btnhide").attr("disabled", false);
+          $("#btntoggle").text("Hide");
+        });
+        $("#btnhide").click(function () {
+          $("#myBox").css("display", "none");
+          $("#btnshow").attr("disabled", false);
+          $("#btnhide").attr("disabled", true);
+          $("#btntoggle").text("Show");
+        });
+        $("#btngrow").click(function () {
+          var myBoxSize = parseInt($("#myBox").css("height"));
+          if (myBoxSize <= 200) {
+            myBoxSize += 10;
+            $("#myBox").css("height", myBoxSize);
+            $("#myBox").css("width", myBoxSize);
+          } else {
+            alert("Cannot increase anymore");
+          }
+        });
+        $("#btnshrink").click(function () {
+          var myBoxSize = parseInt($("#myBox").css("height"));
+          if (myBoxSize >= 40) {
+            myBoxSize -= 10;
+            $("#myBox").css("height", myBoxSize);
+            $("#myBox").css("width", myBoxSize);
+          } else {
+            alert("Cannot Decrese anymore");
+          }
+        });
+      });
+    </script>
+    <title>Jquery</title>
+  </head>
+  <body>
+    <div id="myBox" class="jq"></div>
+    <hr />
+    <button id="btnhide">Hide</button>
+    <button id="btnshow" disabled>Show</button>
+    <hr />
+    <button id="btngrow">+</button>
+    <button id="btnshrink">-</button>
+    <button id="btntoggle">Hide</button>
+  </body>
+</html>
